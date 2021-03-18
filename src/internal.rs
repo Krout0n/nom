@@ -108,11 +108,7 @@ pub enum Err<E> {
 impl<E> Err<E> {
   /// Tests if the result is Incomplete
   pub fn is_incomplete(&self) -> bool {
-    if let Err::Incomplete(_) = self {
-      true
-    } else {
-      false
-    }
+    matches!(self, Err::Incomplete(_))
   }
 
   /// Applies the given function to the inner error
